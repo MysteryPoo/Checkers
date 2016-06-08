@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Checkers</string>
+    <string name="checkerboard">Checkerboard</string>
+    <string name="red">Red</string>
 </resources>
