@@ -28,6 +28,7 @@ public class Piece extends ImageButton {
         fl.addView(piece);
     }
 
+    // Create movement objects to click on surrounding the piece in applicable locations.
     private class PieceOnClickListener implements OnClickListener {
         private Piece parent;
 
@@ -41,17 +42,25 @@ public class Piece extends ImageButton {
             int right = parent.x + 1;
             int down = parent.y + 1;
             if (left >= 0) {
-                if (up >= 0)
-                    new Piece(v.getContext(), parent.gl, R.drawable.red, left, up);
-                if (down < 8)
-                    new Piece(v.getContext(), parent.gl, R.drawable.red, left, down);
+                if (up >= 0 && MainActivity.validPosition(left, up))
+                    MainActivity.pieces.add(new Piece(v.getContext(), parent.gl, R.drawable.red, left, up));
+                if (down < 8 && MainActivity.validPosition(left, down))
+                    MainActivity.pieces.add(new Piece(v.getContext(), parent.gl, R.drawable.red, left, down));
             }
             if (right < 8) {
-                if (up >= 0)
-                    new Piece(v.getContext(), parent.gl, R.drawable.red, right, up);
-                if (down < 8)
-                    new Piece(v.getContext(), parent.gl, R.drawable.red, right, down);
+                if (up >= 0 && MainActivity.validPosition(right, up))
+                    MainActivity.pieces.add(new Piece(v.getContext(), parent.gl, R.drawable.red, right, up));
+                if (down < 8 && MainActivity.validPosition(right, down))
+                    MainActivity.pieces.add(new Piece(v.getContext(), parent.gl, R.drawable.red, right, down));
             }
         }
+    }
+
+    public int getPieceX() {
+        return x;
+    }
+
+    public int getPieceY() {
+        return y;
     }
 }

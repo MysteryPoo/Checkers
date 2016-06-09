@@ -12,7 +12,17 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    private List<Piece> pieces = new ArrayList<>();
+    static List<Piece> pieces = new ArrayList<>();
+
+    static boolean validPosition(int x, int y) {
+        boolean ret = true;
+        for(Piece p : pieces) {
+            if(p.getPieceX() == x && p.getPieceY() == y) {
+                ret = false;
+            }
+        }
+        return ret;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,12 +40,12 @@ public class MainActivity extends AppCompatActivity {
             newPiece(R.drawable.black, x, 1);
         }
         // Red pieces
-        for (int x = 0; x < 8; x += 2) {
+        for (int x = 1; x < 8; x += 2) {
             for (int y = 5; y < 8; y += 2) {
                 newPiece(R.drawable.red, x, y);
             }
         }
-        for (int x = 1; x < 8; x += 2) {
+        for (int x = 0; x < 8; x += 2) {
             newPiece(R.drawable.red, x, 6);
         }
     }
