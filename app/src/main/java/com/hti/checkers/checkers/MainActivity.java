@@ -6,9 +6,13 @@ import android.util.TypedValue;
 import android.view.Gravity;
 import android.widget.FrameLayout;
 import android.widget.GridLayout;
-import android.widget.ImageButton;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
+
+    private List<Piece> pieces = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,29 +20,42 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         setupBoard();
 
-        newPiece(R.drawable.black, 1, 0);
-        newPiece(R.drawable.red, 5, 3);
+        // Black pieces
+        for (int x = 0; x < 8; x += 2) {
+            for (int y = 0; y < 3; y += 2) {
+                newPiece(R.drawable.black, x, y);
+            }
+        }
+        for (int x = 1; x < 8; x += 2) {
+            newPiece(R.drawable.black, x, 1);
+        }
+        // Red pieces
+        for (int x = 0; x < 8; x += 2) {
+            for (int y = 5; y < 8; y += 2) {
+                newPiece(R.drawable.red, x, y);
+            }
+        }
+        for (int x = 1; x < 8; x += 2) {
+            newPiece(R.drawable.red, x, 6);
+        }
     }
 
     private void newPiece(int color, int x, int y) {
-        GridLayout gl = (GridLayout)findViewById(R.id.gridLayout);
-        FrameLayout fl = (FrameLayout)gl.getChildAt(getIndex(x, y));
-        ImageButton piece = new ImageButton(this);
-        piece.setBackgroundResource(color);
-        fl.addView(piece);
+        GridLayout gl = (GridLayout) findViewById(R.id.gridLayout);
+        pieces.add(new Piece(this, gl, color, x, y));
     }
 
-    private int getIndex(int x, int y) {
+    static int getIndex(int x, int y) {
         return x * 8 + y;
     }
 
     private void setupBoard() {
-        GridLayout gl = (GridLayout)findViewById(R.id.gridLayout);
-        for(int x = 0; x < 8; ++x) {
-            for(int y = 0; y < 8; ++y) {
+        GridLayout gl = (GridLayout) findViewById(R.id.gridLayout);
+        for (int x = 0; x < 8; ++x) {
+            for (int y = 0; y < 8; ++y) {
                 GridLayout.LayoutParams lp = new GridLayout.LayoutParams();
-                lp.width = (int)TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 52, getResources().getDisplayMetrics());
-                lp.height = (int)TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 54, getResources().getDisplayMetrics());
+                lp.width = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 52, getResources().getDisplayMetrics());
+                lp.height = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 54, getResources().getDisplayMetrics());
                 lp.setGravity(Gravity.FILL);
                 lp.columnSpec = GridLayout.spec(x);
                 lp.rowSpec = GridLayout.spec(y);
