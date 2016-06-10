@@ -3,4 +3,6 @@
     <string name="checkerboard">Checkerboard</string>
     <string name="red">Red</string>
     <string name="black">Black</string>
+    <string name="title_activity_home_page">HomePage</string>
+    <string name="title_activity_options">Options</string>
 </resources>
