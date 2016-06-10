@@ -5,20 +5,19 @@
     <application
         android:allowBackup="true"
         android:icon="@drawable/checkboard"
-        android:label="Checkers"
         android:supportsRtl="true"
         android:theme="@style/CheckersTheme">
 
         <activity
-            android:name=".MainActivity">
-        </activity>
+            android:name=".MainActivity"
+            android:theme="@style/CheckersTheme.NoActionBar"/>
 
         <activity
             android:name=".SplashScreen"
+            android:noHistory="true"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
-            android:theme="@style/SplashScreenTheme"
-            android:noHistory="true">
+            android:theme="@style/SplashScreenTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -28,11 +27,18 @@
         <activity
             android:name=".HomePage"
             android:label="Home"
-            android:theme="@style/CheckersTheme.NoActionBar"/>
+            android:theme="@style/CheckersTheme.NoActionBar" />
+
         <activity
             android:name=".Options"
             android:label="Options"
-            android:theme="@style/CheckersTheme.NoActionBar"/>
+            android:theme="@style/CheckersTheme.NoActionBar" />
+
+        <activity
+            android:name=".StartNewGame"
+            android:label="New Game"
+            android:theme="@style/CheckersTheme.NoActionBar" />
+
     </application>
 
 </manifest>
