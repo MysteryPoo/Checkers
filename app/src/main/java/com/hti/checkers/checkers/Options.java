@@ -18,6 +18,10 @@ public class Options extends AppCompatActivity {
         setContentView(R.layout.activity_options);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        android.support.v7.app.ActionBar actionBar = getSupportActionBar();
+        assert actionBar != null;
+        actionBar.setTitle("Options");
     }
 
 }

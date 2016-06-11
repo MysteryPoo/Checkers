@@ -10,7 +10,8 @@
 
         <activity
             android:name=".MainActivity"
-            android:theme="@style/CheckersTheme.NoActionBar"/>
+            android:theme="@style/CheckersTheme.NoActionBar"
+            android:screenOrientation="portrait" />
 
         <activity
             android:name=".SplashScreen"
@@ -36,7 +37,7 @@
 
         <activity
             android:name=".StartNewGame"
-            android:label="Getting Started"
+            android:label="New Game"
             android:theme="@style/CheckersTheme.NoActionBar" />
 
     </application>

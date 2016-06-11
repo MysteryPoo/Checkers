@@ -9,7 +9,8 @@
     tools:context="com.hti.checkers.checkers.StartNewGame"
     android:orientation="vertical"
     android:background="@color/white"
-    android:baselineAligned="false">
+    android:baselineAligned="false"
+    tools:showIn="@layout/activity_start_new_game">
 
     <TextView
         android:layout_width="match_parent"
