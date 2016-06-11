@@ -1,8 +1,6 @@
 <resources>
 
-    <!-- Base application theme. -->
     <style name="CheckersTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/darkred</item>
         <item name="colorPrimaryDark">@color/black</item>
         <item name="colorAccent">@color/darkred</item>
@@ -23,9 +21,5 @@
     <style name="SplashScreenTheme" parent="CheckersTheme.NoActionBar">
         <item name="android:windowBackground">@drawable/splash</item>
     </style>
-
-
-
-
 
 </resources>
