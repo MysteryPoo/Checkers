@@ -36,7 +36,7 @@
 
         <activity
             android:name=".StartNewGame"
-            android:label="New Game"
+            android:label="Getting Started"
             android:theme="@style/CheckersTheme.NoActionBar" />
 
     </application>

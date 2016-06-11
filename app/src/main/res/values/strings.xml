@@ -2,12 +2,13 @@
     <string name="app_name">Checkers</string>
     <string name="checkerboard">Checkerboard</string>
     <string name="red">Red</string>
+    <string name="save">Save</string>
     <string name="black">Black</string>
     <string name="title_activity_home_page">HomePage</string>
     <string name="title_activity_options">Options</string>
     <string name="Cancel">Cancel</string>
     <string name="Start">Start</string>
-    <string name="Color">Color</string>
+    <string name="Color">Color:</string>
     <string name="StartNewGame">Start New Game</string>
     <string name="welcome">Welcome To Checkers!</string>
 
