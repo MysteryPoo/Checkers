@@ -16,7 +16,6 @@ public class Piece extends ImageButton {
 
     private int x, y, color;
     GridLayout gl;
-    List<Move> moves;
 
     public Piece(final Context context, GridLayout gl, int color, int x, int y) {
         super(context);
@@ -24,8 +23,6 @@ public class Piece extends ImageButton {
         this.y = y;
         this.color = color;
         this.gl = gl;
-
-        moves = new ArrayList<>();
 
         FrameLayout fl = (FrameLayout) gl.getChildAt(MainActivity.getIndex(x, y));
         ImageButton piece = new ImageButton(context);
@@ -43,24 +40,22 @@ public class Piece extends ImageButton {
         }
 
         public void onClick(View v) {
-            for (Move m : me.getMoves()) {
-                m.Remove();
-            }
+            MainActivity.clearMoves();
             int left = me.x - 1;
             int up = me.y - 1;
             int right = me.x + 1;
             int down = me.y + 1;
             if (left >= 0) {
-                if (up >= 0 && MainActivity.validPosition(left, up))
-                    moves.add(new Move(v.getContext(), me.gl, me, color == R.drawable.red ? R.drawable.red_move : R.drawable.black_move, left, up));
-                if (down < 8 && MainActivity.validPosition(left, down))
-                    moves.add(new Move(v.getContext(), me.gl, me, color == R.drawable.red ? R.drawable.red_move : R.drawable.black_move, left, down));
+                if (color == R.drawable.red && up >= 0 && MainActivity.validPosition(left, up))
+                    MainActivity.moves.add(new Move(v.getContext(), me.gl, me, color == R.drawable.red ? R.drawable.red_move : R.drawable.black_move, left, up));
+                if (color == R.drawable.black && down < 8 && MainActivity.validPosition(left, down))
+                    MainActivity.moves.add(new Move(v.getContext(), me.gl, me, color == R.drawable.red ? R.drawable.red_move : R.drawable.black_move, left, down));
             }
             if (right < 8) {
-                if (up >= 0 && MainActivity.validPosition(right, up))
-                    moves.add(new Move(v.getContext(), me.gl, me, color == R.drawable.red ? R.drawable.red_move : R.drawable.black_move, right, up));
-                if (down < 8 && MainActivity.validPosition(right, down))
-                    moves.add(new Move(v.getContext(), me.gl, me, color == R.drawable.red ? R.drawable.red_move : R.drawable.black_move, right, down));
+                if (color == R.drawable.red && up >= 0 && MainActivity.validPosition(right, up))
+                    MainActivity.moves.add(new Move(v.getContext(), me.gl, me, color == R.drawable.red ? R.drawable.red_move : R.drawable.black_move, right, up));
+                if (color == R.drawable.black && down < 8 && MainActivity.validPosition(right, down))
+                    MainActivity.moves.add(new Move(v.getContext(), me.gl, me, color == R.drawable.red ? R.drawable.red_move : R.drawable.black_move, right, down));
             }
         }
     }
@@ -73,17 +68,10 @@ public class Piece extends ImageButton {
         return y;
     }
 
-    public List<Move> getMoves() {
-        return moves;
-    }
-
     public void Remove() {
-        for (Move m : moves) {
-            m.Remove();
-        }
         FrameLayout fl = (FrameLayout) gl.getChildAt(MainActivity.getIndex(x, y));
         fl.removeAllViews();
-        MainActivity.removePiece(this);
+        MainActivity.pieces.remove(this);
     }
 
     public int getColor() {

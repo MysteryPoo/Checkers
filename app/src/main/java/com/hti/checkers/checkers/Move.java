@@ -39,11 +39,7 @@ public class Move extends ImageButton {
         }
 
         public void onClick(View v) {
-            /*
-            FrameLayout fl = (FrameLayout) me.getGl().getChildAt(MainActivity.getIndex(me.getPieceX(), me.getPieceY()));
-            fl.removeAllViews();
-            fl = (FrameLayout) piece.getGl().getChildAt(MainActivity.getIndex(piece.getPieceX(), piece.getPieceY()));
-            fl.removeAllViews(); */
+            MainActivity.clearMoves();
             piece.Remove();
             MainActivity.newPiece(piece.getColor() == R.drawable.red ? R.drawable.red : R.drawable.black, me.getPieceX(), me.getPieceY());
         }
@@ -61,6 +57,4 @@ public class Move extends ImageButton {
     public int getPieceY() {
         return y;
     }
-
-    public GridLayout getGl() {return gl;}
 }

@@ -16,28 +16,19 @@ public class MainActivity extends AppCompatActivity {
 
     static GridLayout gl;
     static List<Piece> pieces = new ArrayList<>();
+    static List<Move> moves = new ArrayList<>();
     static Context c;
 
-    static void removePiece(Piece p) {
-        pieces.remove(p);
+    static void clearMoves() {
+        for(Move m : moves) {
+            m.Remove();
+        }
+        moves.clear();
     }
 
     static boolean validPosition(int x, int y) {
-        boolean ret = true;
-        for(Piece p : pieces) {
-            if(p.getPieceX() == x && p.getPieceY() == y) {
-                ret = false;
-            } else if(p.getColor() == R.drawable.red) {
-                if(y > p.getPieceY()) {
-                    ret = false;
-                }
-            } else {
-                if(y < p.getPieceY()) {
-                    ret = false;
-                }
-            }
-        }
-        return ret;
+        FrameLayout fl = (FrameLayout) gl.getChildAt(getIndex(x, y));
+        return fl.getChildCount() == 0;
     }
 
     @Override
@@ -77,7 +68,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     static void newPiece(int color, int x, int y) {
-        //GridLayout gl = (GridLayout) findViewById(R.id.gridLayout);
         pieces.add(new Piece(c, gl, color, x, y));
     }
 
