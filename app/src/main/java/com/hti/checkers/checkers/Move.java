@@ -12,7 +12,7 @@ import android.widget.ImageButton;
 public class Move extends ImageButton {
     private int x, y, color;
     GridLayout gl;
-    private Piece parent;
+    private Piece parent, delete = null;
 
     public Move(final Context context, GridLayout gl, Piece parent, int color, int x, int y) {
         super(context);
@@ -29,6 +29,11 @@ public class Move extends ImageButton {
         fl.addView(piece);
     }
 
+    public Move(final Context context, GridLayout gl, Piece parent, int color, int x, int y, Piece d) {
+        this(context, gl, parent, color, x, y);
+        delete = d;
+    }
+
     private class PieceOnClickListener implements OnClickListener {
         private Move me;
         private Piece piece;
@@ -41,6 +46,14 @@ public class Move extends ImageButton {
         public void onClick(View v) {
             MainActivity.clearMoves();
             piece.Remove();
+            if(delete != null) {
+                delete.Remove();
+                if(piece.getColor() == R.drawable.black) {
+                    MainActivity.addScore(true);
+                } else {
+                    MainActivity.addScore(false);
+                }
+            }
             MainActivity.newPiece(piece.getColor() == R.drawable.red ? R.drawable.red : R.drawable.black, me.getPieceX(), me.getPieceY());
         }
     }

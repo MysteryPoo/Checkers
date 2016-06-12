@@ -8,6 +8,7 @@ import android.util.TypedValue;
 import android.view.Gravity;
 import android.widget.FrameLayout;
 import android.widget.GridLayout;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +19,8 @@ public class MainActivity extends AppCompatActivity {
     static List<Piece> pieces = new ArrayList<>();
     static List<Move> moves = new ArrayList<>();
     static Context c;
+
+    static TextView playerScore, cpuScore;
 
     static void clearMoves() {
         for(Move m : moves) {
@@ -31,6 +34,27 @@ public class MainActivity extends AppCompatActivity {
         return fl.getChildCount() == 0;
     }
 
+    static int getColor(int x, int y) {
+        Piece p = getPiece(x, y);
+        return p == null ? -1 : p.getColor();
+    }
+
+    static Piece getPiece(int x, int y) {
+        for(Piece p : pieces) {
+            if(p.getPieceX() == x && p.getPieceY() == y) {
+                return p;
+            }
+        }
+        return null;
+    }
+
+    static void removePiece(int x, int y) {
+        Piece p = getPiece(x, y);
+        if(p != null) {
+            pieces.remove(p);
+        }
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +65,9 @@ public class MainActivity extends AppCompatActivity {
         assert actionBar != null;
         actionBar.setTitle("Checkers!!!");
         actionBar.setDisplayShowHomeEnabled(true);
+
+        playerScore = (TextView) findViewById(R.id.PlayerScoreTv);
+        cpuScore = (TextView) findViewById(R.id.CPUScoreTV);
 
         c = this;
         gl = (GridLayout) findViewById(R.id.gridLayout);
@@ -91,6 +118,16 @@ public class MainActivity extends AppCompatActivity {
 
                 gl.addView(fl);
             }
+        }
+    }
+
+    static void addScore(boolean player) {
+        if(player) {
+            int score = Integer.parseInt(playerScore.getText().toString()) + 1;
+            playerScore.setText(String.valueOf(score));
+        } else {
+            int score = Integer.parseInt(cpuScore.getText().toString()) + 1;
+            cpuScore.setText(String.valueOf(score));
         }
     }
 }
