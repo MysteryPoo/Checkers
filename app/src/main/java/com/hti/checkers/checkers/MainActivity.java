@@ -1,12 +1,11 @@
 package com.hti.checkers.checkers;
 
-import android.content.Intent;
+import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.TypedValue;
 import android.view.Gravity;
-import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.GridLayout;
 
@@ -15,13 +14,27 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
+    static GridLayout gl;
     static List<Piece> pieces = new ArrayList<>();
+    static Context c;
+
+    static void removePiece(Piece p) {
+        pieces.remove(p);
+    }
 
     static boolean validPosition(int x, int y) {
         boolean ret = true;
         for(Piece p : pieces) {
             if(p.getPieceX() == x && p.getPieceY() == y) {
                 ret = false;
+            } else if(p.getColor() == R.drawable.red) {
+                if(y > p.getPieceY()) {
+                    ret = false;
+                }
+            } else {
+                if(y < p.getPieceY()) {
+                    ret = false;
+                }
             }
         }
         return ret;
@@ -37,6 +50,9 @@ public class MainActivity extends AppCompatActivity {
         assert actionBar != null;
         actionBar.setTitle("Checkers!!!");
         actionBar.setDisplayShowHomeEnabled(true);
+
+        c = this;
+        gl = (GridLayout) findViewById(R.id.gridLayout);
 
         setupBoard();
 
@@ -60,9 +76,9 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void newPiece(int color, int x, int y) {
-        GridLayout gl = (GridLayout) findViewById(R.id.gridLayout);
-        pieces.add(new Piece(this, gl, color, x, y));
+    static void newPiece(int color, int x, int y) {
+        //GridLayout gl = (GridLayout) findViewById(R.id.gridLayout);
+        pieces.add(new Piece(c, gl, color, x, y));
     }
 
     static int getIndex(int x, int y) {
