@@ -11,5 +11,10 @@
     <string name="Color">Color:</string>
     <string name="StartNewGame">Start New Game</string>
     <string name="welcome">Welcome To Checkers!!!</string>
+    <string name="Player">Player</string>
+    <string name="CPU">CPU</string>
+    <string name="PlayerScorePlaceHolder">0</string>
+    <string name="CPUScorePlaceHolder">0</string>
+
 
 </resources>
