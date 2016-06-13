@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.TypedValue;
+import android.view.Display;
 import android.view.Gravity;
 import android.widget.FrameLayout;
 import android.widget.GridLayout;
@@ -103,12 +104,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setupBoard() {
+		Display display = getWindowManager().getDefaultDisplay();
+		int width = display.getWidth();
+		int height = display.getHeight();
         GridLayout gl = (GridLayout) findViewById(R.id.gridLayout);
         for (int x = 0; x < 8; ++x) {
             for (int y = 0; y < 8; ++y) {
                 GridLayout.LayoutParams lp = new GridLayout.LayoutParams();
-                lp.width = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 52, getResources().getDisplayMetrics());
-                lp.height = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 54, getResources().getDisplayMetrics());
+                lp.width = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, width/16, getResources().getDisplayMetrics());
+                lp.height = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, (height-180)/24, getResources().getDisplayMetrics());
                 lp.setGravity(Gravity.FILL);
                 lp.columnSpec = GridLayout.spec(x);
                 lp.rowSpec = GridLayout.spec(y);
