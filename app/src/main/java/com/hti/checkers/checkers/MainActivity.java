@@ -104,11 +104,13 @@ public class MainActivity extends AppCompatActivity {
 
     private void setupBoard() {
         GridLayout gl = (GridLayout) findViewById(R.id.gridLayout);
+        int width = getResources().getDisplayMetrics().widthPixels;
+        int height = getResources().getDisplayMetrics().heightPixels - 700;
         for (int x = 0; x < 8; ++x) {
             for (int y = 0; y < 8; ++y) {
                 GridLayout.LayoutParams lp = new GridLayout.LayoutParams();
-                lp.width = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 52, getResources().getDisplayMetrics());
-                lp.height = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 54, getResources().getDisplayMetrics());
+                lp.width = width/8;//(int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 52, getResources().getDisplayMetrics());
+                lp.height = height/8;//(int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 54, getResources().getDisplayMetrics());
                 lp.setGravity(Gravity.FILL);
                 lp.columnSpec = GridLayout.spec(x);
                 lp.rowSpec = GridLayout.spec(y);
