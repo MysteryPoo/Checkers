@@ -7,8 +7,10 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.TypedValue;
 import android.view.Gravity;
+import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.GridLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -106,8 +108,9 @@ public class MainActivity extends AppCompatActivity {
 
     private void setupBoard() {
         GridLayout gl = (GridLayout) findViewById(R.id.gridLayout);
+        View v = (View) gl.getParent();
         int width = getResources().getDisplayMetrics().widthPixels;
-        int height = getResources().getDisplayMetrics().heightPixels - 700;
+        int height = width; //getResources().getDisplayMetrics().heightPixels;
         for (int x = 0; x < 8; ++x) {
             for (int y = 0; y < 8; ++y) {
                 GridLayout.LayoutParams lp = new GridLayout.LayoutParams();
@@ -130,12 +133,9 @@ public class MainActivity extends AppCompatActivity {
         if(player) {
             int score = Integer.parseInt(playerScore.getText().toString()) + 1;
             playerScore.setText(String.valueOf(score));
-
-
         } else {
             int score = Integer.parseInt(cpuScore.getText().toString()) + 1;
             cpuScore.setText(String.valueOf(score));
-
         }
     }
 }
