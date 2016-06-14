@@ -1,6 +1,7 @@
 package com.hti.checkers.checkers;
 
 import android.content.Context;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -9,6 +10,7 @@ import android.view.Gravity;
 import android.widget.FrameLayout;
 import android.widget.GridLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -123,13 +125,17 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    static void addScore(boolean player) {
+     static void addScore(boolean player) {
+
         if(player) {
             int score = Integer.parseInt(playerScore.getText().toString()) + 1;
             playerScore.setText(String.valueOf(score));
+
+
         } else {
             int score = Integer.parseInt(cpuScore.getText().toString()) + 1;
             cpuScore.setText(String.valueOf(score));
+
         }
     }
 }

@@ -1,10 +1,12 @@
 package com.hti.checkers.checkers;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.GridLayout;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 /**
  * Created by Matthew on 6/12/2016.
@@ -50,8 +52,22 @@ public class Move extends ImageButton {
                 delete.Remove();
                 if(piece.getColor() == R.drawable.black) {
                     MainActivity.addScore(true);
+                    //Since there are 12 pieces per player, when one reaches 12 points the game is over
+                    if(Integer.parseInt(MainActivity.playerScore.getText().toString()) == 12)
+                    {
+                        Toast.makeText(getContext(), "Game Over. Winner is 'Player'", Toast.LENGTH_LONG).show();
+
+                        Intent home = new Intent (getContext(), HomePage.class);
+                        getContext().startActivity(home);
+                    }
                 } else {
                     MainActivity.addScore(false);
+                    if(Integer.parseInt(MainActivity.cpuScore.getText().toString()) == 12)
+                    {
+                        Toast.makeText(getContext(), "Game Over. Winner is 'CPU'", Toast.LENGTH_LONG).show();
+                        Intent home = new Intent (getContext(), HomePage.class);
+                        getContext().startActivity(home);
+                    }
                 }
             }
             MainActivity.newPiece(piece.getColor() == R.drawable.red ? R.drawable.red : R.drawable.black, me.getPieceX(), me.getPieceY());
