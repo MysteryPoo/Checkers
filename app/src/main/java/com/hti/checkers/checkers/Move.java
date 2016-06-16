@@ -14,7 +14,7 @@ import android.widget.Toast;
 public class Move extends ImageButton {
     private int x, y, color;
     GridLayout gl;
-    private Piece parent, delete = null;
+    private Piece delete = null;
 
     public Move(final Context context, GridLayout gl, Piece parent, int color, int x, int y) {
         super(context);
@@ -22,12 +22,13 @@ public class Move extends ImageButton {
         this.y = y;
         this.color = color;
         this.gl = gl;
-        this.parent = parent;
+        //this.parent = parent;
 
         FrameLayout fl = (FrameLayout) gl.getChildAt(MainActivity.getIndex(x, y));
         ImageButton piece = new ImageButton(context);
         piece.setBackgroundResource(color);
         piece.setOnClickListener(new PieceOnClickListener(this, parent));
+        piece.getBackground().setAlpha(0);
         fl.addView(piece);
     }
 
@@ -47,7 +48,6 @@ public class Move extends ImageButton {
 
         public void onClick(View v) {
             MainActivity.clearMoves();
-            piece.Remove();
             if(delete != null) {
                 delete.Remove();
                 if(piece.getColor() == R.drawable.black) {
@@ -71,6 +71,7 @@ public class Move extends ImageButton {
                 }
             }
             MainActivity.newPiece(piece.getColor() == R.drawable.red ? R.drawable.red : R.drawable.black, me.getPieceX(), me.getPieceY());
+            piece.Remove();
         }
     }
 

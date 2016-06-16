@@ -17,8 +17,7 @@ public class HomePage extends AppCompatActivity {
     }
 
     public void gotoNewGame(View view) {
-        Intent newGame = new Intent(this, StartNewGame.class);
-        startActivity(newGame);
+        startActivity(new Intent (this, MainActivity.class));
     }
 
     @Override
