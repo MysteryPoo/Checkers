@@ -15,6 +15,7 @@
     <string name="CPU">Red</string>
     <string name="PlayerScorePlaceHolder">0</string>
     <string name="CPUScorePlaceHolder">0</string>
+    <string name="Exit">Exit</string>
 
 
 </resources>

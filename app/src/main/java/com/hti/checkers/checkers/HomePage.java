@@ -1,5 +1,6 @@
 package com.hti.checkers.checkers;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -14,6 +15,12 @@ public class HomePage extends AppCompatActivity {
     public void gotoOptions(View view){
         Intent options = new Intent(this, Options.class);
         startActivity(options);
+    }
+
+    public void gotoExit(View view){
+        moveTaskToBack(true);
+        android.os.Process.killProcess(android.os.Process.myPid());
+        System.exit(1);
     }
 
     public void gotoNewGame(View view) {
@@ -31,7 +38,7 @@ public class HomePage extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "TODO: Make the Help Activity", Snackbar.LENGTH_LONG)
+                Snackbar.make(view, "Language: English", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
         });

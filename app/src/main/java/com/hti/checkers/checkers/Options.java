@@ -9,6 +9,7 @@ import android.content.Intent;
 public class Options extends AppCompatActivity {
     public void closeOptions(View view){
         Intent gobackHome = new Intent(this, HomePage.class);
+        finish();
         startActivity(gobackHome);
     }
 
