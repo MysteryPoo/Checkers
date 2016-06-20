@@ -1,18 +1,14 @@
 package com.hti.checkers.checkers;
 
 import android.content.Context;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.GridLayout;
-import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,10 +20,11 @@ public class MainActivity extends AppCompatActivity {
     static List<Move> moves = new ArrayList<>();
     static Context c;
 
-    static TextView playerScore, cpuScore;
+    static TextView BlackScore, RedScore;
 
     static void clearMoves() {
         for(Move m : moves) {
+
             m.Remove();
         }
         moves.clear();
@@ -70,8 +67,8 @@ public class MainActivity extends AppCompatActivity {
         actionBar.setTitle("Checkers!!!");
         actionBar.setDisplayShowHomeEnabled(true);
 
-        playerScore = (TextView) findViewById(R.id.PlayerScoreTv);
-        cpuScore = (TextView) findViewById(R.id.CPUScoreTV);
+        BlackScore = (TextView) findViewById(R.id.PlayerScoreTv);
+        RedScore = (TextView) findViewById(R.id.CPUScoreTV);
 
         c = this;
         gl = (GridLayout) findViewById(R.id.gridLayout);
@@ -131,11 +128,11 @@ public class MainActivity extends AppCompatActivity {
      static void addScore(boolean player) {
 
         if(player) {
-            int score = Integer.parseInt(playerScore.getText().toString()) + 1;
-            playerScore.setText(String.valueOf(score));
+            int score = Integer.parseInt(BlackScore.getText().toString()) + 1;
+            BlackScore.setText(String.valueOf(score));
         } else {
-            int score = Integer.parseInt(cpuScore.getText().toString()) + 1;
-            cpuScore.setText(String.valueOf(score));
+            int score = Integer.parseInt(RedScore.getText().toString()) + 1;
+            RedScore.setText(String.valueOf(score));
         }
     }
 }
