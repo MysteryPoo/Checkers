@@ -82,10 +82,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/hti/checkers/checkers/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5661538">
+            <state vertical-scroll-proportion="0.0">
               <caret line="87" column="13" selection-start-line="87" selection-start-column="13" selection-end-line="87" selection-end-column="13" />
               <folding>
                 <element signature="e#3217#3218#0" expanded="true" />
@@ -97,11 +97,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Move.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Move.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/hti/checkers/checkers/Move.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="61" column="21" selection-start-line="61" selection-start-column="21" selection-end-line="61" selection-end-column="21" />
+            <state vertical-scroll-proportion="0.7846154">
+              <caret line="30" column="8" selection-start-line="30" selection-start-column="8" selection-end-line="30" selection-end-column="8" />
               <folding />
             </state>
           </provider>
@@ -1769,9 +1769,9 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/content_home_page.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/hti/checkers/checkers/Options.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/hti/checkers/checkers/HomePage.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/hti/checkers/checkers/Move.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/hti/checkers/checkers/Piece.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/hti/checkers/checkers/MainActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/hti/checkers/checkers/Move.java" />
       </list>
     </option>
   </component>
@@ -2658,14 +2658,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/hti/checkers/checkers/Move.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="61" column="21" selection-start-line="61" selection-start-column="21" selection-end-line="61" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/hti/checkers/checkers/Piece.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -2679,7 +2671,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/hti/checkers/checkers/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5661538">
+        <state vertical-scroll-proportion="0.0">
           <caret line="87" column="13" selection-start-line="87" selection-start-column="13" selection-end-line="87" selection-end-column="13" />
           <folding>
             <element signature="e#3217#3218#0" expanded="true" />
@@ -2687,6 +2679,14 @@
             <element signature="e#3315#3316#0" expanded="true" />
             <element signature="e#3347#3348#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/hti/checkers/checkers/Move.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7846154">
+          <caret line="30" column="8" selection-start-line="30" selection-start-column="8" selection-end-line="30" selection-end-column="8" />
+          <folding />
         </state>
       </provider>
     </entry>

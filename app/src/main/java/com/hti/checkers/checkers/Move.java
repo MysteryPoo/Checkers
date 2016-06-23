@@ -28,7 +28,7 @@ public class Move extends ImageButton {
         ImageButton piece = new ImageButton(context);
         piece.setBackgroundResource(color);
         piece.setOnClickListener(new PieceOnClickListener(this, parent));
-        //piece.getBackground().setAlpha(0);
+        piece.getBackground().setAlpha(0);
         fl.addView(piece);
     }
 
