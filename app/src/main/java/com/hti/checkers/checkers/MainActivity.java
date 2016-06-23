@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -30,14 +31,11 @@ public class MainActivity extends AppCompatActivity {
         moves.clear();
     }
 
-    static boolean validPosition(int x, int y) {
+    static boolean emptyLocation(int x, int y) {
+        if(x < 0 || x >= 8 || y < 0 || y >= 8)
+            return false;
         FrameLayout fl = (FrameLayout) gl.getChildAt(getIndex(x, y));
         return fl.getChildCount() == 0;
-    }
-
-    static int getColor(int x, int y) {
-        Piece p = getPiece(x, y);
-        return p == null ? -1 : p.getColor();
     }
 
     static Piece getPiece(int x, int y) {
@@ -75,8 +73,22 @@ public class MainActivity extends AppCompatActivity {
 
         setupBoard();
 
+        for(int i = 0; i < 8; ++i) {
+            for(int j = 0; j < 8; ++j) {
+                Random r = new Random();
+                // 50% chance to place a piece
+                if(r.nextFloat() > 0.5) {
+                    // 50% chance the piece is red
+                    if(r.nextFloat() > 0.5) {
+                        newPiece(R.drawable.red, i, j);
+                    } else {
+                        newPiece(R.drawable.black, i, j);
+                    }
+                }
+            }
+        }
         // Black pieces
-        for (int x = 0; x < 8; x += 2) {
+        /*for (int x = 0; x < 8; x += 2) {
             for (int y = 0; y < 3; y += 2) {
                 newPiece(R.drawable.black, x, y);
             }
@@ -92,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
         }
         for (int x = 0; x < 8; x += 2) {
             newPiece(R.drawable.red, x, 6);
-        }
+        }*/
     }
 
     static void newPiece(int color, int x, int y) {
@@ -105,7 +117,6 @@ public class MainActivity extends AppCompatActivity {
 
     private void setupBoard() {
         GridLayout gl = (GridLayout) findViewById(R.id.gridLayout);
-        View v = (View) gl.getParent();
         int width = getResources().getDisplayMetrics().widthPixels;
         int height = width; //getResources().getDisplayMetrics().heightPixels;
         for (int x = 0; x < 8; ++x) {
