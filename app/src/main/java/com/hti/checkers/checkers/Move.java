@@ -53,7 +53,7 @@ public class Move extends ImageButton {
                 if(piece.getColor() == R.drawable.black) {
                     MainActivity.addScore(true);
                     //Since there are 12 pieces per player, when one reaches 12 points the game is over
-                    if(Integer.parseInt(MainActivity.BlackScore.getText().toString()) == 12)
+                    if(Integer.parseInt(MainActivity.BlackScore.getText().toString()) == MainActivity.totalRed)
                     {
                         Toast.makeText(getContext(), "Game Over. Winner is 'Black'", Toast.LENGTH_LONG).show();
 
@@ -62,7 +62,7 @@ public class Move extends ImageButton {
                     }
                 } else {
                     MainActivity.addScore(false);
-                    if(Integer.parseInt(MainActivity.RedScore.getText().toString()) == 12)
+                    if(Integer.parseInt(MainActivity.RedScore.getText().toString()) == MainActivity.totalBlack)
                     {
                         Toast.makeText(getContext(), "Game Over. Winner is 'Red'", Toast.LENGTH_LONG).show();
                         Intent home = new Intent (getContext(), HomePage.class);

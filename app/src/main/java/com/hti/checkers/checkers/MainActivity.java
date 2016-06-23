@@ -23,6 +23,9 @@ public class MainActivity extends AppCompatActivity {
 
     static TextView BlackScore, RedScore;
 
+    static int totalBlack = 0;
+    static int totalRed = 0;
+
     static void clearMoves() {
         for(Move m : moves) {
 
@@ -81,8 +84,10 @@ public class MainActivity extends AppCompatActivity {
                     // 50% chance the piece is red
                     if(r.nextFloat() > 0.5) {
                         newPiece(R.drawable.red, i, j);
+                        totalRed++;
                     } else {
                         newPiece(R.drawable.black, i, j);
+                        totalBlack++;
                     }
                 }
             }
@@ -110,6 +115,9 @@ public class MainActivity extends AppCompatActivity {
     static void newPiece(int color, int x, int y) {
         pieces.add(new Piece(c, gl, color, x, y));
     }
+
+    private int getTotalBlack() {return totalBlack;}
+    private int getTotalRed() {return totalRed;}
 
     static int getIndex(int x, int y) {
         return x * 8 + y;
